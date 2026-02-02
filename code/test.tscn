@@ -1,44 +1,31 @@
 [gd_scene format=3 uid="uid://dl42jmggsckte"]
 
-[ext_resource type="Script" uid="uid://ij6dxddnbk1q" path="res://code/character_body_3d.gd" id="1_mv0j7"]
-[ext_resource type="Texture2D" uid="uid://b13av5lh6qui3" path="res://programmer_art.png" id="1_v30mm"]
-[ext_resource type="Script" uid="uid://dgdv7a2d8mupy" path="res://code/player/ground_ray.gd" id="3_m0n4f"]
+[ext_resource type="PackedScene" uid="uid://dlkoasxoxhnot" path="res://Code/player/player.tscn" id="1_v30mm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mv0j7"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m0n4f"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_m0n4f"]
-sky_material = SubResource("ProceduralSkyMaterial_mv0j7")
+[sub_resource type="Sky" id="Sky_uurxf"]
+sky_material = SubResource("ProceduralSkyMaterial_m0n4f")
 
-[sub_resource type="Environment" id="Environment_uurxf"]
+[sub_resource type="Environment" id="Environment_axscq"]
 background_mode = 2
-sky = SubResource("Sky_m0n4f")
+sky = SubResource("Sky_uurxf")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axscq"]
 albedo_color = Color(0, 0.13333334, 0, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t8dpl"]
-
-[sub_resource type="Gradient" id="Gradient_uurxf"]
-offsets = PackedFloat32Array(0, 0.45783132, 0.6626506)
-colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 0.38039216, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_axscq"]
-gradient = SubResource("Gradient_uurxf")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [node name="Node3D" type="Node3D" unique_id=325976232]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=169694772]
+environment = SubResource("Environment_axscq")
 
 [node name="World" type="Node3D" parent="." unique_id=1167665479]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=1875050650]
-environment = SubResource("Environment_uurxf")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=493525354]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.89763, -0.44000635, -0.025587518, -0.010743945, -0.03619308, 0.9992871, -0.44061872, 0.89726496, 0.027760593, 0, 3.7469018, 0)
 shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="World" unique_id=324792623]
@@ -48,27 +35,4 @@ use_collision = true
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_axscq")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=724576245]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("1_mv0j7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1396419197]
-shape = SubResource("CapsuleShape3D_t8dpl")
-
-[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D" unique_id=1302709675]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09891105, 0)
-pixel_size = 0.0075
-billboard = 2
-texture = ExtResource("1_v30mm")
-
-[node name="Sprite3D2" type="Sprite3D" parent="CharacterBody3D" unique_id=1958018917]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-pixel_size = 0.02
-texture = SubResource("GradientTexture2D_axscq")
-
-[node name="ground" type="RayCast3D" parent="CharacterBody3D" unique_id=1839066249]
-target_position = Vector3(0, -10, 0)
-script = ExtResource("3_m0n4f")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=291694094]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
+[node name="Player" parent="." unique_id=1649163747 instance=ExtResource("1_v30mm")]
