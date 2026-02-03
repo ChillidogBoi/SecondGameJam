@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bkv81f45pb16m"]
+
+[ext_resource type="Script" uid="uid://1gm0gk4taie3" path="res://Code/enemies/base_enemy.gd" id="1_hpx1j"]
+
+[sub_resource type="Gradient" id="Gradient_xob7j"]
+offsets = PackedFloat32Array(0.04819277, 0.072289154, 0.57228917, 0.57831323)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3i04b"]
+gradient = SubResource("Gradient_xob7j")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fu80t"]
+radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hpx1j"]
+radius = 1.75
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1734939418 node_paths=PackedStringArray("markers")]
+velocity = Vector3(-5, 0, 0)
+script = ExtResource("1_hpx1j")
+health = 2
+damage = 1
+markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3")]
+patrol_size = Vector2(3, 2.015)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1018294325]
+pixel_size = 0.0072
+billboard = 2
+texture = SubResource("GradientTexture2D_3i04b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2077489655]
+shape = SubResource("SphereShape3D_fu80t")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=235136904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0833335, 0, 0.083333336)
+
+[node name="Marker3D2" type="Marker3D" parent="." unique_id=914327992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0833335, 0, -3.946667)
+
+[node name="Marker3D3" type="Marker3D" parent="." unique_id=118269739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083333336, 0, -3.946667)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1690764269]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1489401888]
+shape = SubResource("SphereShape3D_hpx1j")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dl42jmggsckte"]
 
 [ext_resource type="PackedScene" uid="uid://dlkoasxoxhnot" path="res://Code/player/player.tscn" id="1_v30mm"]
+[ext_resource type="Script" uid="uid://bojmigaa2stjf" path="res://code/enemies/enemy_stopper.gd" id="2_m0n4f"]
+[ext_resource type="PackedScene" uid="uid://bkv81f45pb16m" path="res://Code/enemies/base_enemy.tscn" id="2_mv0j7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m0n4f"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -36,3 +38,13 @@ size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_axscq")
 
 [node name="Player" parent="." unique_id=1649163747 instance=ExtResource("1_v30mm")]
+
+[node name="enemies" type="Node3D" parent="." unique_id=931039498]
+top_level = true
+script = ExtResource("2_m0n4f")
+
+[node name="CharacterBody3D" parent="enemies" unique_id=1734939418 instance=ExtResource("2_mv0j7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.136768, 2.418735, -4.917673)
+health = 2
+damage = 1
+patrol_size = Vector2(6, 3)

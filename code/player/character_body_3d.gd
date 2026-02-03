@@ -3,9 +3,28 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const KB = 25.0
+const KB_LENGTH = 10
+var kb_frames: int = 0
+var in_kb: bool = false
+
+
+
+func hurt(hitter: CharacterBody3D):
+	get_parent().health.value -= hitter.damage
+	velocity = hitter.global_position.direction_to(global_position) * KB
+	velocity.y = 3.5
+	in_kb = true
 
 
 func _physics_process(delta):
+	if in_kb:
+		kb_frames += 1
+		move_and_slide()
+		if kb_frames > KB_LENGTH:
+			in_kb = false
+			kb_frames = 0
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
