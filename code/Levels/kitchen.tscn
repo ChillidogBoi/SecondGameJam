@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://clwpv0qmwbplg"]
+
+[node name="Kitchen" type="Node3D" unique_id=1860294768]
+
+[node name="Level" type="CSGCombiner3D" parent="." unique_id=1477937210]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level" unique_id=1766979526]
+size = Vector3(200, 1, 1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1990729365]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 71, 0)
+spot_range = 75.0
+spot_angle = 15.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1931638238]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 44, 71, -1.9233012e-06)
+spot_range = 75.0
+spot_angle = 15.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="." unique_id=818782402]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, -44, 71, 1.9233012e-06)
+spot_range = 75.0
+spot_angle = 15.0

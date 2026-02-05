@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cldcl6en47a75"]
+
+[ext_resource type="Texture2D" uid="uid://bn2spsukdgvl8" path="res://Art/Environment/bg_3.jpg" id="1_6yo3p"]
+[ext_resource type="Texture2D" uid="uid://jet50rpkyqt8" path="res://Art/Environment/bg_1.png" id="2_62idq"]
+[ext_resource type="PackedScene" uid="uid://dlkoasxoxhnot" path="res://Code/player/player.tscn" id="2_64vqk"]
+[ext_resource type="Texture2D" uid="uid://dganfme3k4t4y" path="res://Art/Environment/bg_2.png" id="3_gxveg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62idq"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yo3p"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64vqk"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gxveg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_m020f"]
+sky_material = SubResource("ProceduralSkyMaterial_gxveg")
+
+[sub_resource type="Environment" id="Environment_tji7f"]
+background_mode = 2
+sky = SubResource("Sky_m020f")
+tonemap_mode = 2
+
+[node name="Garden" type="Node3D" unique_id=982974155]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1930820543]
+pixel_size = 0.025
+shaded = true
+texture = ExtResource("1_6yo3p")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1917140877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.4010353)
+sorting_offset = 100.0
+pixel_size = 0.035
+shaded = true
+texture = ExtResource("2_62idq")
+
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1807727215]
+sorting_offset = 0.025
+pixel_size = 0.025
+shaded = true
+texture = ExtResource("3_gxveg")
+
+[node name="Player" parent="." unique_id=1649163747 instance=ExtResource("2_64vqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.414627, -2.3113375, 4.745243)
+
+[node name="level" type="Node3D" parent="." unique_id=197316688]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="level" unique_id=715038835]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1086466864]
+transform = Transform3D(1, 0, 0, 0, 0.9877157, -0.15626204, 0, 0.15626204, 0.9877157, -1.9273071, -2.9396338, 5.5156136)
+size = Vector3(161.66492, 0.5, 12.4626465)
+material = SubResource("StandardMaterial3D_62idq")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1472016766]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 2.6805065, 12.714319)
+size = Vector3(200, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_6yo3p")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1866873391]
+transform = Transform3D(0.49999988, 0, -0.86602527, 0, 0.9999999, 0, 0.86602527, 0, 0.49999988, -63.218277, 2.6805065, 6.714321)
+size = Vector3(18, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_6yo3p")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1074935982]
+transform = Transform3D(-4.371139e-08, 0, -0.99999994, 0, 0.9999999, 0, 0.99999994, 0, -4.371138e-08, 59, 2.6805065, 6.714321)
+size = Vector3(18, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_6yo3p")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1593653179]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 2.6805065, -1.0542183)
+size = Vector3(200, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_64vqk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="level" unique_id=1038876051]
+environment = SubResource("Environment_tji7f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="level" unique_id=1908440128]
+transform = Transform3D(-0.8660255, -0.4330128, 0.25000003, 0.24056333, 0.077480674, 0.96753615, -0.4383257, 0.8980516, 0.03706658, 0, 0, 0)
+shadow_enabled = true
+
+[editable path="Player"]

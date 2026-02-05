@@ -16,7 +16,6 @@ func _physics_process(delta):
 	if input_dir == 0: linear_damp = 2
 	elif input_dir != cur_dir and cur_dir != 0: linear_damp = 5
 	else: linear_damp = 0
-	print(linear_damp)
 
 
 func hurt(hitter: CharacterBody3D):
