@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 9.5
+const JUMP_VELOCITY = 20.0
 const KB = 25.0
 const KB_LENGTH = 10
 var kb_frames: int = 0
@@ -27,7 +27,7 @@ func _physics_process(delta):
 		return
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 5
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():

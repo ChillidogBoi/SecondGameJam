@@ -20,6 +20,7 @@ func _input(event):
 			rigid.visible = false
 			rigid.get_child(0).disabled = true
 			rigid.get_child(2).get_child(0).disabled = true
+			chara.velocity = Vector3.ZERO
 			chara.global_position = rigid.global_position
 			chara.visible = true
 			chara.get_child(0).disabled = false

@@ -62,6 +62,8 @@ rigid = NodePath("CharacterBody3D2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 3
 collision_mask = 3
+wall_min_slide_angle = 0.0
+floor_max_angle = 0.43633232
 script = ExtResource("1_0v7ib")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1134599065]
@@ -81,6 +83,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_0v7ib")
+gravity_scale = 4.5
 freeze = true
 script = ExtResource("3_0v7ib")
 damage = 1
@@ -115,7 +118,7 @@ pixel_size = 0.04
 texture = SubResource("GradientTexture2D_css0l")
 
 [node name="Camera3D" type="Camera3D" parent="ground/Sprite3D2" unique_id=1514842103]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -13.944336, 4.348983)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -16, 4.5)
 
 [node name="UI" type="Control" parent="." unique_id=641625499]
 layout_mode = 3

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dl42jmggsckte"]
 
 [ext_resource type="PackedScene" uid="uid://dlkoasxoxhnot" path="res://Code/player/player.tscn" id="1_v30mm"]
-[ext_resource type="Script" uid="uid://bojmigaa2stjf" path="res://code/enemies/enemy_stopper.gd" id="2_m0n4f"]
+[ext_resource type="Script" uid="uid://bojmigaa2stjf" path="res://Code/enemies/enemy_stopper.gd" id="2_m0n4f"]
 [ext_resource type="PackedScene" uid="uid://bkv81f45pb16m" path="res://Code/enemies/base_enemy.tscn" id="2_mv0j7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m0n4f"]
@@ -16,8 +16,15 @@ background_mode = 2
 sky = SubResource("Sky_uurxf")
 tonemap_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_puen3"]
+transparency = 1
+albedo_color = Color(0, 0.13333334, 0, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axscq"]
 albedo_color = Color(0, 0.13333334, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gd3q0"]
+albedo_color = Color(1, 0.23529412, 0, 1)
 
 [node name="Node3D" type="Node3D" unique_id=325976232]
 
@@ -33,18 +40,45 @@ shadow_enabled = true
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="World" unique_id=324792623]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="World/CSGCombiner3D" unique_id=522278677]
-size = Vector3(100, 1, 100)
+[node name="fore" type="CSGBox3D" parent="World/CSGCombiner3D" unique_id=1321545956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 4.5586843)
+size = Vector3(100000, 20, 1)
+material = SubResource("StandardMaterial3D_puen3")
+
+[node name="back" type="CSGBox3D" parent="World/CSGCombiner3D" unique_id=2087784352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, -4.5)
+size = Vector3(100000, 20, 1)
+material = SubResource("StandardMaterial3D_puen3")
+
+[node name="floor1" type="CSGBox3D" parent="World/CSGCombiner3D" unique_id=522278677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.20984, 0, 0)
+size = Vector3(127, 1, 8)
 material = SubResource("StandardMaterial3D_axscq")
 
+[node name="floor2" type="CSGBox3D" parent="World/CSGCombiner3D" unique_id=973347980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.37317, 0, 0)
+size = Vector3(74, 1, 8)
+material = SubResource("StandardMaterial3D_axscq")
+
+[node name="ramp1" type="CSGBox3D" parent="World/CSGCombiner3D" unique_id=719869454]
+transform = Transform3D(0.86602527, -0.49999994, 0, 0.49999994, 0.86602527, 0, 0, 0, 1, 7.0362177, 1.7539916, 0)
+size = Vector3(8, 1, 8)
+material = SubResource("StandardMaterial3D_gd3q0")
+
+[node name="ramp2" type="CSGBox3D" parent="World/CSGCombiner3D" unique_id=1051055474]
+transform = Transform3D(0.86602527, 0.49999994, 0, -0.49999994, 0.86602527, 0, 0, 0, 1, 24.490128, 1.7539916, 0)
+size = Vector3(8, 1, 8)
+material = SubResource("StandardMaterial3D_gd3q0")
+
 [node name="Player" parent="." unique_id=1649163747 instance=ExtResource("1_v30mm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.282715, 0, 0)
 
 [node name="enemies" type="Node3D" parent="." unique_id=931039498]
 top_level = true
 script = ExtResource("2_m0n4f")
 
 [node name="CharacterBody3D" parent="enemies" unique_id=1734939418 instance=ExtResource("2_mv0j7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.136768, 2.418735, -4.917673)
-health = 2
-damage = 1
-patrol_size = Vector2(6, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.164745, 2.418735, 1.7074804)
+health = 2.0
+damage = 1.0
+patrol_size = Vector2(10, 2)
