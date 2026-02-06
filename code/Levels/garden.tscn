@@ -50,13 +50,13 @@ size = Vector3(297, 0.5, 12.4626465)
 material = SubResource("StandardMaterial3D_62idq")
 
 [node name="end" type="CSGBox3D" parent="level_col" unique_id=1074935982]
-transform = Transform3D(-0.258819, 0, -0.9659257, 0, 0.9999999, 0, 0.9659257, 0, -0.258819, 178, 2.6805065, 6.714321)
+transform = Transform3D(0, 0, -0.99999994, 0, 0.9999999, 0, 0.99999994, 0, 0, 176.79558, 2.6805065, 6.714321)
 use_collision = true
 size = Vector3(18, 31.987091, 1.6611328)
 material = SubResource("StandardMaterial3D_6yo3p")
 
 [node name="start" type="CSGBox3D" parent="level_col" unique_id=1866873391]
-transform = Transform3D(0.25881895, 0, -0.96592563, 0, 0.9999999, 0, 0.96592563, 0, 0.25881895, -63.218277, 2.6805065, 6.714321)
+transform = Transform3D(-2.9802322e-08, 0, -0.9999999, 0, 0.9999999, 0, 0.9999999, 0, -2.9802322e-08, -62.670277, 2.6805065, 6.714321)
 use_collision = true
 size = Vector3(18, 31.987091, 1.6611328)
 material = SubResource("StandardMaterial3D_6yo3p")
@@ -176,7 +176,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25000003, 0.2405633, 0.077480
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1649163747 instance=ExtResource("2_64vqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.43833, -2.3113375, 4.745243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.749107, -2.3113375, 4.745243)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=1948363047 node_paths=PackedStringArray("player", "faces")]
 script = ExtResource("5_tji7f")

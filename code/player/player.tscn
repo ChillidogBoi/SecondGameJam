@@ -206,7 +206,7 @@ render_priority = 4
 texture = SubResource("GradientTexture2D_css0l")
 
 [node name="Camera3D" type="Camera3D" parent="ground/Sprite3D2" unique_id=1514842103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.4265409, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.4265409, 20)
 top_level = true
 
 [node name="roll_sprite" type="Sprite3D" parent="ground" unique_id=1671122932]
