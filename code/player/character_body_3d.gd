@@ -1,13 +1,16 @@
 extends CharacterBody3D
 
 
-const SPEED = 9.5
+const SPEED = 12.5
 const JUMP_VELOCITY = 20.0
 const KB = 25.0
 const KB_LENGTH = 10
 var kb_frames: int = 0
 var in_kb: bool = false
 
+
+func _ready():
+	$"../ground/roll_sprite/AnimationPlayer".play("idle")
 
 
 func hurt(hitter: CharacterBody3D):
@@ -38,9 +41,13 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		if direction.x < 0: $Sprite3D.flip_h = true
+		elif $Sprite3D.flip_h: $Sprite3D.flip_h = false
+		$"../ground/roll_sprite/AnimationPlayer".play("walk")
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		$"../ground/roll_sprite/AnimationPlayer".play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 

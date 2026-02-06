@@ -20,8 +20,10 @@ const KB_LENGTH = 10
 var kb_frames: int = 0
 var in_kb: bool = false
 
-
 func _physics_process(delta):
+	if not get_parent().has_signal("visibility_changed"): return
+	if get_parent().started == false: return
+	
 	if in_kb:
 		kb_frames += 1
 		if not is_on_floor():
@@ -35,8 +37,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if not get_parent().has_signal("visibility_changed"): return
-	if get_parent().started == false: return
+	
 	if cur_dir.y == 0 and patrol_size.x < abs(position.x - start_pos.x):
 		cur_dir = Vector2(cur_dir.y, cur_dir.x)
 	elif cur_dir.x == 0 and patrol_size.y < abs(position.z - start_pos.z):
@@ -50,7 +51,11 @@ func _on_area_3d_body_entered(body):
 
 func _on_area_3d_area_entered(area):
 	health -= area.get_parent().damage
-	if health <= 0: queue_free()
+	if health <= 0:
+		$Sprite3D2.visible = true
+		$Sprite3D2.reparent(get_parent())
+		queue_free()
+		return
 	velocity = area.global_position.direction_to(global_position) * KB
 	velocity.y = 3.5
 	in_kb = true

@@ -4,6 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://jet50rpkyqt8" path="res://Art/Environment/bg_1.png" id="2_62idq"]
 [ext_resource type="PackedScene" uid="uid://dlkoasxoxhnot" path="res://Code/player/player.tscn" id="2_64vqk"]
 [ext_resource type="Texture2D" uid="uid://dganfme3k4t4y" path="res://Art/Environment/bg_2.png" id="3_gxveg"]
+[ext_resource type="Script" uid="uid://1a4pw41btv3y" path="res://Code/Levels/np_cs.gd" id="5_tji7f"]
+[ext_resource type="Texture2D" uid="uid://byfy5r4nrvuaq" path="res://Art/Characters/flower_body_1.png" id="6_f6nvu"]
+[ext_resource type="Texture2D" uid="uid://blhv6cvbowv6n" path="res://Art/Characters/flower_face_1.png" id="7_ib3yi"]
+[ext_resource type="Texture2D" uid="uid://d2iqcru5uywnx" path="res://Art/Characters/flower_body_2.png" id="8_f2h0r"]
+[ext_resource type="Script" uid="uid://bojmigaa2stjf" path="res://Code/enemies/enemy_stopper.gd" id="8_ib3yi"]
+[ext_resource type="Texture2D" uid="uid://f66y4rk5xhqe" path="res://Art/Characters/flower_face_2.png" id="9_r4ika"]
+[ext_resource type="PackedScene" uid="uid://bkv81f45pb16m" path="res://Code/enemies/base_enemy.tscn" id="9_rp07y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62idq"]
 transparency = 1
@@ -31,62 +38,195 @@ tonemap_mode = 2
 
 [node name="Garden" type="Node3D" unique_id=982974155]
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1930820543]
-pixel_size = 0.025
-shaded = true
-texture = ExtResource("1_6yo3p")
+[node name="level_col" type="Node3D" parent="." unique_id=197316688]
 
-[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1917140877]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.4010353)
-sorting_offset = 100.0
-pixel_size = 0.035
-shaded = true
-texture = ExtResource("2_62idq")
-
-[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=1807727215]
-sorting_offset = 0.025
-pixel_size = 0.025
-shaded = true
-texture = ExtResource("3_gxveg")
-
-[node name="Player" parent="." unique_id=1649163747 instance=ExtResource("2_64vqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.414627, -2.3113375, 4.745243)
-
-[node name="level" type="Node3D" parent="." unique_id=197316688]
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="level" unique_id=715038835]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="level_col" unique_id=715038835]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1086466864]
-transform = Transform3D(1, 0, 0, 0, 0.9877157, -0.15626204, 0, 0.15626204, 0.9877157, -1.9273071, -2.9396338, 5.5156136)
-size = Vector3(161.66492, 0.5, 12.4626465)
+[node name="ground" type="CSGBox3D" parent="level_col" unique_id=1086466864]
+transform = Transform3D(1, 0, 0, 0, 0.97498286, -0.22228025, 0, 0.22228025, 0.97498286, 65.740234, -3.8314853, 5.5156136)
+use_collision = true
+size = Vector3(297, 0.5, 12.4626465)
 material = SubResource("StandardMaterial3D_62idq")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1472016766]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 2.6805065, 12.714319)
-size = Vector3(200, 31.987091, 1.6611328)
-material = SubResource("StandardMaterial3D_6yo3p")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1866873391]
-transform = Transform3D(0.49999988, 0, -0.86602527, 0, 0.9999999, 0, 0.86602527, 0, 0.49999988, -63.218277, 2.6805065, 6.714321)
+[node name="end" type="CSGBox3D" parent="level_col" unique_id=1074935982]
+transform = Transform3D(-0.258819, 0, -0.9659257, 0, 0.9999999, 0, 0.9659257, 0, -0.258819, 178, 2.6805065, 6.714321)
+use_collision = true
 size = Vector3(18, 31.987091, 1.6611328)
 material = SubResource("StandardMaterial3D_6yo3p")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1074935982]
-transform = Transform3D(-4.371139e-08, 0, -0.99999994, 0, 0.9999999, 0, 0.99999994, 0, -4.371138e-08, 59, 2.6805065, 6.714321)
+[node name="start" type="CSGBox3D" parent="level_col" unique_id=1866873391]
+transform = Transform3D(0.25881895, 0, -0.96592563, 0, 0.9999999, 0, 0.96592563, 0, 0.25881895, -63.218277, 2.6805065, 6.714321)
+use_collision = true
 size = Vector3(18, 31.987091, 1.6611328)
 material = SubResource("StandardMaterial3D_6yo3p")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="level/CSGCombiner3D" unique_id=1593653179]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 2.6805065, -1.0542183)
-size = Vector3(200, 31.987091, 1.6611328)
+[node name="back" type="CSGBox3D" parent="level_col" unique_id=1593653179]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 56, 2.6805065, -1.0542183)
+use_collision = true
+size = Vector3(312, 31.987091, 1.6611328)
 material = SubResource("StandardMaterial3D_64vqk")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="level" unique_id=1038876051]
+[node name="fore" type="CSGBox3D" parent="level_col" unique_id=1472016766]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 55.5, 2.6805065, 12.714319)
+use_collision = true
+size = Vector3(311, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_6yo3p")
+
+[node name="level_vis" type="Node3D" parent="." unique_id=202318774]
+
+[node name="back1" type="Sprite3D" parent="level_vis" unique_id=1930820543]
+sorting_offset = -500.0
+pixel_size = 0.025
+texture = ExtResource("1_6yo3p")
+
+[node name="back2" type="Sprite3D" parent="level_vis" unique_id=1089977758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.539215, 0, 0)
+pixel_size = 0.025
+texture = ExtResource("1_6yo3p")
+region_enabled = true
+region_rect = Rect2(705.812, 0, 5569.58, 1480)
+
+[node name="floor" type="Sprite3D" parent="level_vis" unique_id=281523671]
+transform = Transform3D(1, 0, 0, 0, 0.45934716, 0.8195466, 0, -1.9431751, 0.19373263, 0, -3.787, 5.549)
+sorting_offset = 150.0
+pixel_size = 0.025
+render_priority = 2
+texture = ExtResource("1_6yo3p")
+region_enabled = true
+region_rect = Rect2(262.72278, 825.06555, 6062.067, 241.76636)
+
+[node name="floor2" type="Sprite3D" parent="level_vis" unique_id=177391020]
+transform = Transform3D(1, 0, 0, 0, 0.45934716, 0.8195466, 0, -1.9431751, 0.19373263, 136.68115, -3.787, 5.549)
+pixel_size = 0.025
+render_priority = 2
+texture = ExtResource("1_6yo3p")
+region_enabled = true
+region_rect = Rect2(262.72278, 825.06555, 6062.067, 241.76636)
+
+[node name="fore1" type="Sprite3D" parent="level_vis" unique_id=1917140877]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, -0.7999954, 1, 11.461094)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="fore3" type="Sprite3D" parent="level_vis" unique_id=1055891546]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, -99.308876, 1, 11.461094)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="fore2" type="Sprite3D" parent="level_vis" unique_id=1389668636]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 97.79999, 1, 11.681828)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="fore4" type="Sprite3D" parent="level_vis" unique_id=1879860856]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 196.28946, 1, 11.681828)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="popu" type="Sprite3D" parent="level_vis" unique_id=1807727215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.75035, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(1695.4121, 0, 1002.88257, 1480)
+
+[node name="popu2" type="Sprite3D" parent="level_vis" unique_id=1612461656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.53363, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(3181.8274, 0, 868.5679, 1480)
+
+[node name="popu4" type="Sprite3D" parent="level_vis" unique_id=175586491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.75526, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(3181.8274, 0, 868.5679, 1480)
+
+[node name="popu3" type="Sprite3D" parent="level_vis" unique_id=1612778486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.04482, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(5205.501, 0, 922.29395, 1480)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="level_vis" unique_id=1038876051]
 environment = SubResource("Environment_tji7f")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="level" unique_id=1908440128]
-transform = Transform3D(-0.8660255, -0.4330128, 0.25000003, 0.24056333, 0.077480674, 0.96753615, -0.4383257, 0.8980516, 0.03706658, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="level_vis" unique_id=1908440128]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25000003, 0.2405633, 0.07748067, 0.96753615, -0.43832564, 0.8980516, 0.037066765, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1649163747 instance=ExtResource("2_64vqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.43833, -2.3113375, 4.745243)
+
+[node name="NPCs" type="Node3D" parent="." unique_id=1948363047 node_paths=PackedStringArray("player", "faces")]
+script = ExtResource("5_tji7f")
+player = NodePath("../Player/ground")
+faces = [NodePath("Flower/Face"), NodePath("Flower2/Face")]
+
+[node name="Flower" type="Sprite3D" parent="NPCs" unique_id=1251105734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 2, 0)
+pixel_size = 0.02
+shaded = true
+render_priority = 4
+texture = ExtResource("6_f6nvu")
+
+[node name="Face" type="Sprite3D" parent="NPCs/Flower" unique_id=1179645750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5652237, 2.4629745, 0.040376663)
+sorting_offset = 1.0
+pixel_size = 0.02
+shaded = true
+texture_filter = 1
+render_priority = 4
+texture = ExtResource("7_ib3yi")
+
+[node name="Flower2" type="Sprite3D" parent="NPCs" unique_id=1782922963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 2, 0)
+pixel_size = 0.02
+shaded = true
+render_priority = 4
+texture = ExtResource("8_f2h0r")
+
+[node name="Face" type="Sprite3D" parent="NPCs/Flower2" unique_id=999572095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0758667, 2.4156914, 0.040376663)
+sorting_offset = 1.0
+pixel_size = 0.02
+shaded = true
+texture_filter = 1
+render_priority = 4
+texture = ExtResource("9_r4ika")
+
+[node name="enemies" type="Node3D" parent="." unique_id=332263749]
+top_level = true
+script = ExtResource("8_ib3yi")
+
+[node name="CharacterBody3D" parent="enemies" unique_id=1734939418 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.296625, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D2" parent="enemies" unique_id=407926954 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7033749, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
 
 [editable path="Player"]

@@ -1,36 +1,39 @@
 [gd_scene format=3 uid="uid://bkv81f45pb16m"]
 
 [ext_resource type="Script" uid="uid://1gm0gk4taie3" path="res://Code/enemies/base_enemy.gd" id="1_hpx1j"]
-
-[sub_resource type="Gradient" id="Gradient_xob7j"]
-offsets = PackedFloat32Array(0.04819277, 0.072289154, 0.57228917, 0.57831323)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3i04b"]
-gradient = SubResource("Gradient_xob7j")
-width = 512
-height = 512
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[ext_resource type="Texture2D" uid="uid://ccgmsvcvcitib" path="res://Art/Characters/bug.png" id="2_xob7j"]
+[ext_resource type="Texture2D" uid="uid://caniaf1l8bfy" path="res://Art/Characters/bug_crushed.png" id="3_3i04b"]
+[ext_resource type="Script" uid="uid://b84g7m5hylip0" path="res://Code/player/ground_ray2.gd" id="4_fu80t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fu80t"]
-radius = 1.5
+radius = 0.35927594
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hpx1j"]
-radius = 1.75
+radius = 0.53571767
+
+[sub_resource type="Gradient" id="Gradient_uurxf"]
+offsets = PackedFloat32Array(0, 0.45783132, 0.6626506)
+colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 0.38039216, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hrlkl"]
+gradient = SubResource("Gradient_uurxf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1734939418 node_paths=PackedStringArray("markers")]
 velocity = Vector3(-5, 0, 0)
 script = ExtResource("1_hpx1j")
-health = 2
-damage = 1
+damage = 1.0
 markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3")]
 patrol_size = Vector2(3, 2.015)
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1018294325]
-pixel_size = 0.0072
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.036453396, 0)
+pixel_size = 0.02
 billboard = 2
-texture = SubResource("GradientTexture2D_3i04b")
+shaded = true
+render_priority = 4
+texture = ExtResource("2_xob7j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2077489655]
 shape = SubResource("SphereShape3D_fu80t")
@@ -50,6 +53,30 @@ collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1489401888]
 shape = SubResource("SphereShape3D_hpx1j")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=710628563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113587976, 0)
+visible = false
+pixel_size = 0.02
+shaded = true
+render_priority = 4
+texture = ExtResource("3_3i04b")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=115794974]
+top_level = true
+target_position = Vector3(0, 0, -100)
+
+[node name="ground" type="RayCast3D" parent="." unique_id=1167783244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5463444, 0)
+target_position = Vector3(0, -10, 0)
+script = ExtResource("4_fu80t")
+
+[node name="Sprite3D2" type="Sprite3D" parent="ground" unique_id=1810904894]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.0734596, 0)
+pixel_size = 0.04
+shaded = true
+render_priority = 4
+texture = SubResource("GradientTexture2D_hrlkl")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

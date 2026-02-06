@@ -6,8 +6,11 @@ const MAX_SPEED = 25.0
 const JUMP_VELOCITY = 4.5
 const KB = 2
 var cur_dir = 0
+var flip_bit: bool = false
+
 
 func _physics_process(delta):
+	
 	var input_dir = Input.get_axis("left", "right")
 	if linear_velocity.length() > MAX_SPEED: return
 	apply_central_impulse(Vector3(input_dir * ACCEL, 0, 0))
@@ -17,6 +20,15 @@ func _physics_process(delta):
 	elif input_dir != cur_dir and cur_dir != 0: linear_damp = 5
 	else: linear_damp = 0
 
+func _process(delta):
+	if not visible: return
+	if flip_bit:
+		flip_bit = false
+		return
+	flip_bit = true
+	$"../ground/roll_sprite/AnimationPlayer".stop(true)
+	$"../ground/roll_sprite/AnimationPlayer".play("roll")
+	$"../ground/roll_sprite/AnimationPlayer".seek((-rotation.z + (PI))/2)
 
 func hurt(hitter: CharacterBody3D):
 	get_parent().health.value -= hitter.damage
