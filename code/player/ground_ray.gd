@@ -1,6 +1,8 @@
 extends RayCast3D
 
 
+var move_y: bool = false
+
 func _physics_process(delta):
 	if get_parent().rigid.visible: global_position = get_parent().rigid.global_position
 	elif get_parent().chara.visible: global_position = get_parent().chara.global_position
@@ -10,3 +12,5 @@ func _physics_process(delta):
 
 func _process(delta):
 	$Sprite3D2/Camera3D.global_position.x = global_position.x
+	if not move_y: return
+	$Sprite3D2/Camera3D.global_position.y = global_position.y

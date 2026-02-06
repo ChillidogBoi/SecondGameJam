@@ -7,6 +7,7 @@ const KB = 25.0
 const KB_LENGTH = 10
 var kb_frames: int = 0
 var in_kb: bool = false
+var paused: bool = false
 
 
 func _ready():
@@ -14,6 +15,7 @@ func _ready():
 
 
 func hurt(hitter: CharacterBody3D):
+	if paused: return
 	get_parent().health.value -= hitter.damage
 	velocity = hitter.global_position.direction_to(global_position) * KB
 	velocity.y = 3.5
@@ -21,6 +23,15 @@ func hurt(hitter: CharacterBody3D):
 
 
 func _physics_process(delta):
+	if paused: return
+	if Input.is_action_just_pressed("pause"):
+		if $"../UI/Menu".visible:
+			paused = false
+			$"../UI/Menu".visible = false
+		else:
+			paused = true
+			$"../UI/Menu".visible = true
+	
 	if in_kb:
 		kb_frames += 1
 		move_and_slide()

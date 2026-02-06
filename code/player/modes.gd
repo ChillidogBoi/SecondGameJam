@@ -4,6 +4,7 @@ extends Node3D
 @export var chara: CharacterBody3D
 @export var rigid: RigidBody3D
 @export var roll_sprite: Sprite3D
+@export var shadow: RayCast3D
 
 func _input(event):
 	if event.is_action_pressed("roll"):
@@ -27,3 +28,8 @@ func _input(event):
 			chara.global_position = rigid.global_position
 			chara.visible = true
 			chara.get_child(0).disabled = false
+
+
+func _on_switch_level_pressed():
+	if get_parent().name == "Kitchen": get_tree().change_scene_to_file("res://Code/Levels/garden.tscn")
+	elif get_parent().name == "Garden": get_tree().change_scene_to_file("res://Code/Levels/kitchen.tscn")
