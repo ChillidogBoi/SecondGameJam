@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccgmsvcvcitib" path="res://Art/Characters/bug.png" id="2_xob7j"]
 [ext_resource type="Texture2D" uid="uid://caniaf1l8bfy" path="res://Art/Characters/bug_crushed.png" id="3_3i04b"]
 [ext_resource type="Script" uid="uid://b84g7m5hylip0" path="res://Code/player/ground_ray2.gd" id="4_fu80t"]
+[ext_resource type="AudioStream" uid="uid://bx1t5gvrx85sg" path="res://Music/sfx/bug_kill_01.mp3" id="5_hrlkl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fu80t"]
 radius = 0.35927594
@@ -20,11 +21,10 @@ gradient = SubResource("Gradient_uurxf")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Enemy" type="CharacterBody3D" unique_id=1734939418 node_paths=PackedStringArray("markers")]
+[node name="Enemy" type="CharacterBody3D" unique_id=1734939418]
 velocity = Vector3(-5, 0, 0)
 script = ExtResource("1_hpx1j")
 damage = 1.0
-markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3")]
 patrol_size = Vector2(3, 2.015)
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1018294325]
@@ -77,6 +77,9 @@ pixel_size = 0.04
 shaded = true
 render_priority = 4
 texture = SubResource("GradientTexture2D_hrlkl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1059779467]
+stream = ExtResource("5_hrlkl")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

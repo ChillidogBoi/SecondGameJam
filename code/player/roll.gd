@@ -12,6 +12,8 @@ var flip_bit: bool = false
 func _physics_process(delta):
 	
 	var input_dir = Input.get_axis("left", "right")
+	if input_dir: $"../AudioStreamPlayer".play()
+	else: $"../AudioStreamPlayer".stop()
 	if linear_velocity.length() > MAX_SPEED: return
 	apply_central_impulse(Vector3(input_dir * ACCEL, 0, 0))
 	if abs(linear_velocity.x) < 0.5: cur_dir = 0

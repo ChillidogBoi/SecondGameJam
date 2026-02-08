@@ -20,6 +20,9 @@ const KB_LENGTH = 10
 var kb_frames: int = 0
 var in_kb: bool = false
 
+func _ready():
+	$AudioStreamPlayer.volume_linear = settings.sfx_vol
+
 func _physics_process(delta):
 	if not get_parent().has_signal("visibility_changed"): return
 	if get_parent().started == false: return
@@ -54,8 +57,13 @@ func _on_area_3d_area_entered(area):
 	if health <= 0:
 		$Sprite3D2.visible = true
 		$Sprite3D2.reparent(get_parent())
+		$AudioStreamPlayer.play()
 		queue_free()
 		return
 	velocity = area.global_position.direction_to(global_position) * KB
 	velocity.y = 3.5
 	in_kb = true
+
+
+func _on_player_sfx_changed():
+	$AudioStreamPlayer.volume_linear = settings.sfx_vol

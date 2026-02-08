@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bojmigaa2stjf" path="res://Code/enemies/enemy_stopper.gd" id="8_ib3yi"]
 [ext_resource type="Texture2D" uid="uid://f66y4rk5xhqe" path="res://Art/Characters/flower_face_2.png" id="9_r4ika"]
 [ext_resource type="PackedScene" uid="uid://bkv81f45pb16m" path="res://Code/enemies/base_enemy.tscn" id="9_rp07y"]
+[ext_resource type="AudioStream" uid="uid://drpxbwnel8jxh" path="res://Music/bgm/little_gear_01.mp3" id="11_f2h0r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62idq"]
 transparency = 1
@@ -231,6 +232,12 @@ patrol_size = Vector2(3.5, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7033749, -1.581265, 9.70748)
 health = -1.0
 patrol_size = Vector2(3.5, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=69414540]
+stream = ExtResource("11_f2h0r")
+autoplay = true
+
+[connection signal="sfx_changed" from="Player" to="enemies/CharacterBody3D" method="_on_player_sfx_changed"]
 
 [editable path="Player"]
 [editable path="NPCs/Flower"]

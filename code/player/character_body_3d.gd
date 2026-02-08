@@ -23,7 +23,6 @@ func hurt(hitter: CharacterBody3D):
 
 
 func _physics_process(delta):
-	if paused: return
 	if Input.is_action_just_pressed("pause"):
 		if $"../UI/Menu".visible:
 			paused = false
@@ -32,6 +31,7 @@ func _physics_process(delta):
 			paused = true
 			$"../UI/Menu".visible = true
 	
+	if paused: return
 	if in_kb:
 		kb_frames += 1
 		move_and_slide()

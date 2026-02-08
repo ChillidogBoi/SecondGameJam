@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://wkowup4dw0vx" path="res://Art/Characters/gear_sheet2.png" id="3_dbae8"]
 [ext_resource type="Script" uid="uid://c5svbghug005l" path="res://Code/player/ground_ray.gd" id="4_0grxj"]
 [ext_resource type="Texture2D" uid="uid://boqykn0lpevpm" path="res://Art/Characters/gear_rolling_sheet.png" id="6_dbae8"]
+[ext_resource type="AudioStream" uid="uid://lq8tc0cxkh86" path="res://Music/sfx/gearspin_01.mp3" id="7_0grxj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fqk2p"]
 radius = 1.5
@@ -153,7 +154,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 27
 collision_mask = 27
 wall_min_slide_angle = 0.0
-floor_max_angle = 0.61086524
+floor_max_angle = 0.87266463
 script = ExtResource("1_0v7ib")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chara" unique_id=1134599065]
@@ -262,13 +263,67 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="UI/Menu" unique_id=1993941177]
-layout_mode = 0
-offset_left = 271.0
-offset_top = 255.0
-offset_right = 857.0
-offset_bottom = 400.0
-theme_override_font_sizes/font_size = 100
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu" unique_id=462639313]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -61.5
+offset_right = 189.0
+offset_bottom = 61.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="UI/Menu/VBoxContainer" unique_id=1993941177]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "switch_level"
 
-[connection signal="pressed" from="UI/Menu/Button" to="." method="_on_switch_level_pressed"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/Menu/VBoxContainer" unique_id=1725159206]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Menu/VBoxContainer/PanelContainer" unique_id=1831243459]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Menu/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1717621548]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = " Music: "
+
+[node name="HSlider" type="HSlider" parent="UI/Menu/VBoxContainer/PanelContainer/HBoxContainer" unique_id=463843125]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 3.0
+step = 0.001
+value = 1.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="UI/Menu/VBoxContainer" unique_id=1004261986]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Menu/VBoxContainer/PanelContainer2" unique_id=349254194]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Menu/VBoxContainer/PanelContainer2/HBoxContainer2" unique_id=110394115]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = " SFX:      "
+
+[node name="HSlider" type="HSlider" parent="UI/Menu/VBoxContainer/PanelContainer2/HBoxContainer2" unique_id=1768429209]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 3.0
+step = 0.001
+value = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=851711531]
+stream = ExtResource("7_0grxj")
+
+[connection signal="pressed" from="UI/Menu/VBoxContainer/Button" to="." method="_on_switch_level_pressed"]
+[connection signal="value_changed" from="UI/Menu/VBoxContainer/PanelContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="UI/Menu/VBoxContainer/PanelContainer2/HBoxContainer2/HSlider" to="." method="_on_h_slider_2_value_changed"]

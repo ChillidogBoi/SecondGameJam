@@ -5,6 +5,7 @@ extends Node3D
 @export var rigid: RigidBody3D
 @export var roll_sprite: Sprite3D
 @export var shadow: RayCast3D
+signal sfx_changed
 
 func _input(event):
 	if event.is_action_pressed("roll"):
@@ -33,3 +34,15 @@ func _input(event):
 func _on_switch_level_pressed():
 	if get_parent().name == "Kitchen": get_tree().change_scene_to_file("res://Code/Levels/garden.tscn")
 	elif get_parent().name == "Garden": get_tree().change_scene_to_file("res://Code/Levels/kitchen.tscn")
+
+
+func _on_h_slider_value_changed(value):
+	settings.music_vol = value
+	$"../AudioStreamPlayer".volume_linear = value
+func _on_h_slider_2_value_changed(value):
+	settings.sfx_vol = value
+	sfx_changed.emit()
+
+func _ready():
+	$"../AudioStreamPlayer".volume_linear = settings.music_vol
+	$AudioStreamPlayer.volume_linear = settings.sfx_vol
