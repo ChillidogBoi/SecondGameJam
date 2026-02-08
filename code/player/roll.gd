@@ -14,6 +14,7 @@ const BONKS = [
 	preload("res://Music/sfx/bonk_02.mp3"),
 	preload("res://Music/sfx/bonk_03.mp3")
 ]
+const CLINK_01 = preload("uid://8au2dp603u4c")
 
 
 func _physics_process(delta):
@@ -23,7 +24,9 @@ func _physics_process(delta):
 		print(get_colliding_bodies())
 		if not wall:
 			wall = true
-			$"../AudioStreamPlayer3".stream = BONKS[randi_range(0,2)]
+			if get_colliding_bodies().has($"../../Objects/Jar + Can/Jar Full/CSGBox3D"):
+				$"../AudioStreamPlayer3".stream = CLINK_01
+			else: $"../AudioStreamPlayer3".stream = BONKS[randi_range(0,2)]
 			$"../AudioStreamPlayer3".play()
 	else: wall = false
 	if abs(linear_velocity.x) > 0.1 and not freeze:
