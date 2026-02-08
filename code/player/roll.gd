@@ -7,12 +7,27 @@ const JUMP_VELOCITY = 4.5
 const KB = 2
 var cur_dir = 0
 var flip_bit: bool = false
+var wall: bool = false
+
+const BONKS = [
+	preload("res://Music/sfx/bonk_01.mp3"),
+	preload("res://Music/sfx/bonk_02.mp3"),
+	preload("res://Music/sfx/bonk_03.mp3")
+]
 
 
 func _physics_process(delta):
-	
 	var input_dir = Input.get_axis("left", "right")
-	if input_dir: $"../AudioStreamPlayer".play()
+	
+	if get_colliding_bodies().size() > 1:
+		print(get_colliding_bodies())
+		if not wall:
+			wall = true
+			$"../AudioStreamPlayer3".stream = BONKS[randi_range(0,2)]
+			$"../AudioStreamPlayer3".play()
+	else: wall = false
+	if abs(linear_velocity.x) > 0.1 and not freeze:
+		if not $"../AudioStreamPlayer".playing: $"../AudioStreamPlayer".play()
 	else: $"../AudioStreamPlayer".stop()
 	if linear_velocity.length() > MAX_SPEED: return
 	apply_central_impulse(Vector3(input_dir * ACCEL, 0, 0))

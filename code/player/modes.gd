@@ -41,6 +41,8 @@ func _on_h_slider_value_changed(value):
 	$"../AudioStreamPlayer".volume_linear = value
 func _on_h_slider_2_value_changed(value):
 	settings.sfx_vol = value
+	$AudioStreamPlayer.volume_linear = value
+	$AudioStreamPlayer2.volume_linear = value
 	sfx_changed.emit()
 
 func _ready():

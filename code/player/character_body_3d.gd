@@ -9,6 +9,13 @@ var kb_frames: int = 0
 var in_kb: bool = false
 var paused: bool = false
 
+const STEPS = [
+	preload("uid://4chcgtie7qfp"),
+	preload("uid://de654b460nsuj"),
+	preload("uid://bpcido40cfvq8")
+]
+
+
 
 func _ready():
 	$"../ground/roll_sprite/AnimationPlayer".play("idle")
@@ -21,8 +28,8 @@ func hurt(hitter: CharacterBody3D):
 	velocity.y = 3.5
 	in_kb = true
 
-
 func _physics_process(delta):
+	if not visible: return
 	if Input.is_action_just_pressed("pause"):
 		if $"../UI/Menu".visible:
 			paused = false
@@ -32,6 +39,7 @@ func _physics_process(delta):
 			$"../UI/Menu".visible = true
 	
 	if paused: return
+	
 	if in_kb:
 		kb_frames += 1
 		move_and_slide()
@@ -52,6 +60,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		if $"../AudioStreamPlayer2".stream == null: _on_audio_stream_player_2_finished()
 		if direction.x < 0: $Sprite3D.flip_h = true
 		elif $Sprite3D.flip_h: $Sprite3D.flip_h = false
 		$"../ground/roll_sprite/AnimationPlayer".play("walk")
@@ -63,3 +72,10 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_audio_stream_player_2_finished():
+	if abs(velocity.x) + abs(velocity.z) > 0:
+		$"../AudioStreamPlayer2".stream = STEPS[randi_range(0,2)]
+		$"../AudioStreamPlayer2".play()
+	else: $"../AudioStreamPlayer2".stream = null

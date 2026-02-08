@@ -598,118 +598,173 @@ environment = SubResource("Environment_1alta")
 
 [node name="Level" type="CSGCombiner3D" parent="Level_col" unique_id=1477937210]
 use_collision = true
+collision_layer = 129
+collision_mask = 129
 
-[node name="floor" type="CSGBox3D" parent="Level_col/Level" unique_id=1766979526]
+[node name="floor" type="CSGBox3D" parent="Level_col" unique_id=1766979526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.799255, 0, 59.5)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(409, 1, 170)
 material = SubResource("StandardMaterial3D_k5gqc")
 
-[node name="counter" type="CSGBox3D" parent="Level_col/Level" unique_id=1787125375]
+[node name="counter" type="CSGBox3D" parent="Level_col" unique_id=1787125375]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 12.299259, 12.5, -17)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(58, 26, 17)
 material = SubResource("StandardMaterial3D_m0qu7")
 
-[node name="counter9" type="CSGBox3D" parent="Level_col/Level" unique_id=180916303]
+[node name="counter9" type="CSGBox3D" parent="Level_col" unique_id=180916303]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.146088, 32.323856, -11.499994)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(13, 13, 8)
 material = SubResource("StandardMaterial3D_lyksp")
 
-[node name="counter10" type="CSGBox3D" parent="Level_col/Level" unique_id=2041046492]
+[node name="counter10" type="CSGBox3D" parent="Level_col" unique_id=2041046492]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.6460881, 48.823856, -11.499994)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(8, 16, 8)
 material = SubResource("StandardMaterial3D_lyksp")
 
-[node name="counter7" type="CSGBox3D" parent="Level_col/Level" unique_id=780143208]
+[node name="counter7" type="CSGBox3D" parent="Level_col" unique_id=780143208]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -35.760414, 12.355957, -17)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(1.4335938, 23, 17)
 material = SubResource("StandardMaterial3D_o5kc1")
 
-[node name="counter2" type="CSGBox3D" parent="Level_col/Level" unique_id=2144899138]
+[node name="counter8" type="CSGBox3D" parent="Level_col" unique_id=1495376568]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -26.977211, 12.855957, -17)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
+size = Vector3(15, 22, 17)
+material = SubResource("StandardMaterial3D_o5kc1")
+
+[node name="counter2" type="CSGBox3D" parent="Level_col" unique_id=2144899138]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 33.79926, 13.5, -8.999995)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(15, 22, 33)
 material = SubResource("StandardMaterial3D_m0qu7")
 
-[node name="counter4" type="CSGBox3D" parent="Level_col/Level" unique_id=1602489917]
+[node name="counter4" type="CSGBox3D" parent="Level_col" unique_id=1602489917]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 34.29926, 24.5, -8.999995)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(16, 2, 33)
 material = SubResource("StandardMaterial3D_m0qu7")
 
-[node name="counter5" type="CSGBox3D" parent="Level_col/Level" unique_id=1624428963]
+[node name="counter5" type="CSGBox3D" parent="Level_col" unique_id=1624428963]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 27.11182, 1.2182384, -8.999996)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(1.1185303, 1.9570313, 33)
 material = SubResource("StandardMaterial3D_m0qu7")
 
-[node name="counter6" type="CSGBox3D" parent="Level_col/Level" unique_id=1422770529]
+[node name="counter6" type="CSGBox3D" parent="Level_col" unique_id=1422770529]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 40.824924, 1.2182384, -8.999996)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(1.1185303, 1.9570313, 33)
 material = SubResource("StandardMaterial3D_m0qu7")
 
-[node name="counter3" type="CSGBox3D" parent="Level_col/Level" unique_id=2016242235]
+[node name="counter3" type="CSGBox3D" parent="Level_col" unique_id=2016242235]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.299259, 25, -8.329345)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(44, 1, 0.3413086)
 material = SubResource("StandardMaterial3D_m0qu7")
 
-[node name="cabinet" type="CSGBox3D" parent="Level_col/Level" unique_id=1047418891]
+[node name="cabinet" type="CSGBox3D" parent="Level_col" unique_id=1047418891]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 23.29926, 53.5, -20.499998)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(410, 110, 10)
 material = SubResource("StandardMaterial3D_fpose")
 
-[node name="shelf" type="CSGBox3D" parent="Level_col/Level" unique_id=1058766824]
+[node name="shelf" type="CSGBox3D" parent="Level_col" unique_id=1058766824]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 23.209415, 35, -11.999998)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(12.61084, 1, 9)
 material = SubResource("StandardMaterial3D_c4rm5")
 
-[node name="Sprite3D" type="Sprite3D" parent="Level_col/Level/shelf" unique_id=1856932415]
+[node name="Sprite3D" type="Sprite3D" parent="Level_col/shelf" unique_id=1856932415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1924324, -2, -2.0434818)
 pixel_size = 0.0125
 shaded = true
 render_priority = 1
 texture = ExtResource("7_jyqkg")
 
-[node name="shelf3" type="CSGBox3D" parent="Level_col/Level" unique_id=1190089317]
+[node name="shelf3" type="CSGBox3D" parent="Level_col" unique_id=1190089317]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 27.79926, 41, -12.999998)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(13, 1, 7)
 material = SubResource("StandardMaterial3D_5am0a")
 
-[node name="Sprite3D" type="Sprite3D" parent="Level_col/Level/shelf3" unique_id=1256533107]
+[node name="Sprite3D" type="Sprite3D" parent="Level_col/shelf3" unique_id=1256533107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37477493, -3.5410528)
 pixel_size = 0.0125
 shaded = true
 render_priority = 2
 texture = SubResource("CompressedTexture2D_gsqyn")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Level_col/Level/shelf3" unique_id=1784967618]
+[node name="Sprite3D2" type="Sprite3D" parent="Level_col/shelf3" unique_id=1784967618]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.926056, 2.4589481)
 pixel_size = 0.0125
 shaded = true
 render_priority = 1
 texture = ExtResource("9_jjp5m")
 
-[node name="shelf4" type="CSGBox3D" parent="Level_col/Level" unique_id=932402715]
+[node name="shelf4" type="CSGBox3D" parent="Level_col" unique_id=932402715]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.20074, 41, -12.999998)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(13, 1, 7)
 material = SubResource("StandardMaterial3D_5am0a")
 
-[node name="Sprite3D" type="Sprite3D" parent="Level_col/Level/shelf4" unique_id=1817057496]
+[node name="Sprite3D" type="Sprite3D" parent="Level_col/shelf4" unique_id=1817057496]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37477493, -3.5410528)
 pixel_size = 0.0125
 shaded = true
 render_priority = 2
 texture = SubResource("CompressedTexture2D_gsqyn")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Level_col/Level/shelf4" unique_id=1215007680]
+[node name="Sprite3D2" type="Sprite3D" parent="Level_col/shelf4" unique_id=1215007680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.926056, 2.4589481)
 pixel_size = 0.0125
 shaded = true
 render_priority = 1
 texture = ExtResource("9_jjp5m")
 
-[node name="shelf2" type="CSGBox3D" parent="Level_col/Level" unique_id=434955118]
+[node name="shelf2" type="CSGBox3D" parent="Level_col" unique_id=434955118]
 transform = Transform3D(-1, 0, 8.742278e-08, 2.262668e-08, 0.9659258, 0.25881904, -8.444392e-08, 0.25881904, -0.9659258, 4, 38, -11)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(23, 1.3989258, 8)
 material = SubResource("StandardMaterial3D_cqhcr")
 
-[node name="Sprite3D" type="Sprite3D" parent="Level_col/Level/shelf2" unique_id=105794664]
+[node name="Sprite3D" type="Sprite3D" parent="Level_col/shelf2" unique_id=105794664]
 transform = Transform3D(1, 2.2626688e-08, -2.9788438e-09, -2.2626688e-08, 0.96592605, -0.2588191, -2.978858e-09, 0.2588191, 0.96592605, 0.30677986, -0.43398285, 4.1698227)
 flip_h = true
 pixel_size = 0.02
@@ -717,23 +772,35 @@ shaded = true
 render_priority = 1
 texture = ExtResource("10_xraue")
 
-[node name="front" type="CSGBox3D" parent="Level_col/Level" unique_id=1829686353]
+[node name="front" type="CSGBox3D" parent="Level_col" unique_id=1829686353]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.299257, 55.72534, 8.228165)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(1, 109.54932, 161)
 material = SubResource("StandardMaterial3D_1alta")
 
-[node name="front2" type="CSGBox3D" parent="Level_col/Level" unique_id=270327481]
+[node name="front2" type="CSGBox3D" parent="Level_col" unique_id=270327481]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -58.200745, 55.72534, -3.2718391)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(24, 109.54932, 2)
 material = SubResource("StandardMaterial3D_1alta")
 
-[node name="front3" type="CSGBox3D" parent="Level_col/Level" unique_id=1126053606]
+[node name="front3" type="CSGBox3D" parent="Level_col" unique_id=1126053606]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 43.799255, 55.72534, -3.2718391)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(24, 109.54932, 2)
 material = SubResource("StandardMaterial3D_1alta")
 
-[node name="back" type="CSGBox3D" parent="Level_col/Level" unique_id=1759604262]
+[node name="back" type="CSGBox3D" parent="Level_col" unique_id=1759604262]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.299257, 55, -26.219555)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(1, 111, 161)
 material = SubResource("StandardMaterial3D_1alta")
 
@@ -753,12 +820,16 @@ script = ExtResource("2_vtdu0")
 [node name="CSGBox3D" type="CSGBox3D" parent="Objects/broom" unique_id=1034532099]
 transform = Transform3D(-4.512766e-08, 4.6915727e-10, 1.0000014, 0.25881916, 0.96592605, 1.1226743e-08, -0.96592605, 0.25881916, -4.3711452e-08, -1.5538759, 6.324477, 3.3742542)
 use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(2, 16, 6.7239075)
 material = SubResource("StandardMaterial3D_cbjmb")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Objects/broom" unique_id=1026663414]
-transform = Transform3D(-0.282314, -0.02575112, 0.9589805, 0.08703752, 0.9948423, 0.052336354, -0.95537347, 0.09824274, -0.2786119, -1.1470509, 36.423103, 8.713085)
+transform = Transform3D(-0.28231397, -0.025751116, 0.95898044, 0.08703751, 0.9948422, 0.052336346, -0.95537335, 0.09824273, -0.27861184, -1.1470509, 36.423103, 8.713085)
 use_collision = true
+collision_layer = 129
+collision_mask = 129
 size = Vector3(6, 48, 1)
 material = SubResource("StandardMaterial3D_cbjmb")
 
@@ -804,8 +875,10 @@ script = ExtResource("4_1alta")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
 
 [node name="CSGBox3D" type="CSGCylinder3D" parent="Objects/Jar + Can/Jar Full" unique_id=1749346705]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.125, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8121834, 4.125, -12)
 use_collision = true
+collision_layer = 129
+collision_mask = 129
 radius = 5.0
 height = 10.25
 sides = 16
@@ -830,6 +903,8 @@ texture = ExtResource("17_kl3hp")
 [node name="Can" type="CSGCylinder3D" parent="Objects/Jar + Can" unique_id=83817707]
 transform = Transform3D(0.9999997, 0, 0, 0, 0.99999976, 0, 0, 0, 1.0000002, -2.4971848, 16.758286, -20.535534)
 use_collision = true
+collision_layer = 129
+collision_mask = 129
 radius = 1.5
 height = 3.5
 material = SubResource("StandardMaterial3D_d3wk4")
@@ -853,7 +928,7 @@ libraries/ = SubResource("AnimationLibrary_w2g5v")
 stream = ExtResource("17_v653k")
 
 [node name="Sprite3D" type="Sprite3D" parent="Objects/Jar + Can" unique_id=1020997795]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 15.575287, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 15.575287, -22)
 pixel_size = 0.0125
 render_priority = 4
 texture = ExtResource("20_kl3hp")
@@ -944,6 +1019,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.274212, 2.786789, 0)
 stream = ExtResource("24_p4o7v")
 autoplay = true
 
+[connection signal="sfx_changed" from="Player" to="Objects/broom" method="_on_player_sfx_changed"]
+[connection signal="sfx_changed" from="Player" to="Objects/Jar + Can" method="_on_player_sfx_changed"]
 [connection signal="body_entered" from="Objects/broom/Area3D" to="Objects/broom" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Objects/Area3D" to="Objects/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Objects/Area3D" to="Objects/Area3D" method="_on_body_exited"]

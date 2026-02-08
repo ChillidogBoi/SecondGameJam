@@ -16,4 +16,4 @@ func _on_area_3d_body_entered(body):
 
 
 func _on_player_sfx_changed():
-	pass # Replace with function body.
+	_ready()
