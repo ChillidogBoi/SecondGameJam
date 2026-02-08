@@ -21,7 +21,6 @@ func _physics_process(delta):
 	var input_dir = Input.get_axis("left", "right")
 	
 	if get_colliding_bodies().size() > 1:
-		print(get_colliding_bodies())
 		if not wall:
 			wall = true
 			if get_colliding_bodies().has($"../../Objects/Jar + Can/Jar Full/CSGBox3D"):
