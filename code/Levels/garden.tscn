@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://f66y4rk5xhqe" path="res://Art/Characters/flower_face_2.png" id="9_r4ika"]
 [ext_resource type="PackedScene" uid="uid://bkv81f45pb16m" path="res://Code/enemies/base_enemy.tscn" id="9_rp07y"]
 [ext_resource type="AudioStream" uid="uid://drpxbwnel8jxh" path="res://Music/bgm/little_gear_01.mp3" id="11_f2h0r"]
+[ext_resource type="FontFile" uid="uid://pnopnx4xd5d2" path="res://Art/UI/Schoolbell-Regular.ttf" id="12_r4ika"]
+[ext_resource type="Script" uid="uid://c4gl2m0gvmaix" path="res://Code/Levels/button.gd" id="13_tg3vi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62idq"]
 transparency = 1
@@ -35,6 +37,16 @@ sky_material = SubResource("ProceduralSkyMaterial_gxveg")
 background_mode = 2
 sky = SubResource("Sky_m020f")
 tonemap_mode = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eah4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sgrv6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_djsr4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ftlf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvtos"]
 
 [node name="Garden" type="Node3D" unique_id=982974155]
 
@@ -285,7 +297,81 @@ patrol_size = Vector2(3.5, 3)
 stream = ExtResource("11_f2h0r")
 autoplay = true
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=494381880]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7019608)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=785155527]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -44.0
+offset_right = 205.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_r4ika")
+theme_override_font_sizes/font_size = 64
+text = "Loading Level 2..."
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1460881575]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9117923, 0.004553434, 1.92523e-06, 0.6313726)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=345019858]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.5
+offset_top = -44.0
+offset_right = 138.5
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("12_r4ika")
+theme_override_font_sizes/font_size = 128
+text = "Game Over"
+
+[node name="Button" type="Button" parent="ColorRect2" unique_id=2053286728]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 441.0
+offset_right = 672.0
+offset_bottom = 537.0
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.40392157, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("12_r4ika")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eah4d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sgrv6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_djsr4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3ftlf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvtos")
+text = "Retry"
+script = ExtResource("13_tg3vi")
+
 [connection signal="sfx_changed" from="Player" to="enemies/CharacterBody3D" method="_on_player_sfx_changed"]
+[connection signal="pressed" from="ColorRect2/Button" to="ColorRect2/Button" method="_on_pressed"]
 
 [editable path="Player"]
 [editable path="NPCs/Flower"]

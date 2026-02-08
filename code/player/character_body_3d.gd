@@ -27,6 +27,9 @@ func hurt(hitter: CharacterBody3D):
 	velocity = hitter.global_position.direction_to(global_position) * KB
 	velocity.y = 3.5
 	in_kb = true
+	if get_parent().health.value <= 0:
+		paused = true
+		$"../../ColorRect2".visible = true
 
 func _physics_process(delta):
 	if not visible: return
