@@ -1,0 +1,292 @@
+[gd_scene format=3 uid="uid://cldcl6en47a75"]
+
+[ext_resource type="Texture2D" uid="uid://bn2spsukdgvl8" path="res://Art/Environment/bg_3.jpg" id="1_6yo3p"]
+[ext_resource type="Texture2D" uid="uid://jet50rpkyqt8" path="res://Art/Environment/bg_1.png" id="2_62idq"]
+[ext_resource type="PackedScene" uid="uid://dlkoasxoxhnot" path="res://Code/player/player.tscn" id="2_64vqk"]
+[ext_resource type="Texture2D" uid="uid://dganfme3k4t4y" path="res://Art/Environment/bg_2.png" id="3_gxveg"]
+[ext_resource type="Script" uid="uid://1a4pw41btv3y" path="res://Code/Levels/np_cs.gd" id="5_tji7f"]
+[ext_resource type="PackedScene" uid="uid://cbgn7x230s5v2" path="res://Code/Levels/NPC.tscn" id="6_rp07y"]
+[ext_resource type="Texture2D" uid="uid://d2iqcru5uywnx" path="res://Art/Characters/flower_body_2.png" id="8_f2h0r"]
+[ext_resource type="Script" uid="uid://bojmigaa2stjf" path="res://Code/enemies/enemy_stopper.gd" id="8_ib3yi"]
+[ext_resource type="Texture2D" uid="uid://f66y4rk5xhqe" path="res://Art/Characters/flower_face_2.png" id="9_r4ika"]
+[ext_resource type="PackedScene" uid="uid://bkv81f45pb16m" path="res://Code/enemies/base_enemy.tscn" id="9_rp07y"]
+[ext_resource type="AudioStream" uid="uid://drpxbwnel8jxh" path="res://Music/bgm/little_gear_01.mp3" id="11_f2h0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62idq"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yo3p"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64vqk"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gxveg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_m020f"]
+sky_material = SubResource("ProceduralSkyMaterial_gxveg")
+
+[sub_resource type="Environment" id="Environment_tji7f"]
+background_mode = 2
+sky = SubResource("Sky_m020f")
+tonemap_mode = 2
+
+[node name="Garden" type="Node3D" unique_id=982974155]
+
+[node name="level_col" type="Node3D" parent="." unique_id=197316688]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="level_col" unique_id=715038835]
+use_collision = true
+
+[node name="ground" type="CSGBox3D" parent="level_col" unique_id=1086466864]
+transform = Transform3D(1, 0, 0, 0, 0.97498286, -0.22228025, 0, 0.22228025, 0.97498286, 65.740234, -3.8314853, 5.5156136)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
+size = Vector3(297, 0.5, 12.4626465)
+material = SubResource("StandardMaterial3D_62idq")
+
+[node name="end" type="CSGBox3D" parent="level_col" unique_id=1074935982]
+transform = Transform3D(0, 0, -0.99999994, 0, 0.9999999, 0, 0.99999994, 0, 0, 176.79558, 2.6805065, 6.714321)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
+size = Vector3(18, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_6yo3p")
+
+[node name="start" type="CSGBox3D" parent="level_col" unique_id=1866873391]
+transform = Transform3D(-2.9802322e-08, 0, -0.9999999, 0, 0.9999999, 0, 0.9999999, 0, -2.9802322e-08, -62.670277, 2.6805065, 6.714321)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
+size = Vector3(18, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_6yo3p")
+
+[node name="back" type="CSGBox3D" parent="level_col" unique_id=1593653179]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 56, 2.6805065, -1.0542183)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
+size = Vector3(312, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_64vqk")
+
+[node name="fore" type="CSGBox3D" parent="level_col" unique_id=1472016766]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 55.5, 2.6805065, 12.714319)
+use_collision = true
+collision_layer = 129
+collision_mask = 129
+size = Vector3(311, 31.987091, 1.6611328)
+material = SubResource("StandardMaterial3D_6yo3p")
+
+[node name="level_vis" type="Node3D" parent="." unique_id=202318774]
+
+[node name="back1" type="Sprite3D" parent="level_vis" unique_id=1930820543]
+sorting_offset = -500.0
+pixel_size = 0.025
+texture = ExtResource("1_6yo3p")
+
+[node name="back2" type="Sprite3D" parent="level_vis" unique_id=1089977758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.539215, 0, 0)
+pixel_size = 0.025
+texture = ExtResource("1_6yo3p")
+region_enabled = true
+region_rect = Rect2(705.812, 0, 5569.58, 1480)
+
+[node name="floor" type="Sprite3D" parent="level_vis" unique_id=281523671]
+transform = Transform3D(1, 0, 0, 0, 0.45934716, 0.8195466, 0, -1.9431751, 0.19373263, 0, -3.787, 5.549)
+sorting_offset = 150.0
+pixel_size = 0.025
+render_priority = 2
+texture = ExtResource("1_6yo3p")
+region_enabled = true
+region_rect = Rect2(262.72278, 825.06555, 6062.067, 241.76636)
+
+[node name="floor2" type="Sprite3D" parent="level_vis" unique_id=177391020]
+transform = Transform3D(1, 0, 0, 0, 0.45934716, 0.8195466, 0, -1.9431751, 0.19373263, 136.68115, -3.787, 5.549)
+pixel_size = 0.025
+render_priority = 2
+texture = ExtResource("1_6yo3p")
+region_enabled = true
+region_rect = Rect2(262.72278, 825.06555, 6062.067, 241.76636)
+
+[node name="fore1" type="Sprite3D" parent="level_vis" unique_id=1917140877]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, -0.7999954, 1, 11.461094)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="fore3" type="Sprite3D" parent="level_vis" unique_id=1055891546]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, -99.308876, 1, 11.461094)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="fore2" type="Sprite3D" parent="level_vis" unique_id=1389668636]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 97.79999, 1, 11.681828)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="fore4" type="Sprite3D" parent="level_vis" unique_id=1879860856]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 196.28946, 1, 11.681828)
+pixel_size = 0.02
+shaded = true
+render_priority = 5
+texture = ExtResource("2_62idq")
+
+[node name="popu" type="Sprite3D" parent="level_vis" unique_id=1807727215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.75035, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(1695.4121, 0, 1002.88257, 1480)
+
+[node name="popu2" type="Sprite3D" parent="level_vis" unique_id=1612461656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.53363, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(3181.8274, 0, 868.5679, 1480)
+
+[node name="popu4" type="Sprite3D" parent="level_vis" unique_id=175586491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.75526, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(3181.8274, 0, 868.5679, 1480)
+
+[node name="popu3" type="Sprite3D" parent="level_vis" unique_id=1612778486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.04482, 0, 7.7902718)
+pixel_size = 0.025
+shaded = true
+render_priority = 4
+texture = ExtResource("3_gxveg")
+region_enabled = true
+region_rect = Rect2(5205.501, 0, 922.29395, 1480)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="level_vis" unique_id=1038876051]
+environment = SubResource("Environment_tji7f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="level_vis" unique_id=1908440128]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25000003, 0.2405633, 0.07748067, 0.96753615, -0.43832564, 0.8980516, 0.037066765, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1649163747 instance=ExtResource("2_64vqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.749107, -2.3113375, 4.745243)
+
+[node name="Chara" parent="Player" index="0" unique_id=1090318998]
+collision_layer = 11
+collision_mask = 11
+
+[node name="NPCs" type="Node3D" parent="." unique_id=1948363047 node_paths=PackedStringArray("player", "faces")]
+script = ExtResource("5_tji7f")
+player = NodePath("../Player/ground")
+faces = [NodePath("Flower/Face"), NodePath("Flower2/Face")]
+
+[node name="Flower" parent="NPCs" unique_id=851628040 instance=ExtResource("6_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.97477, -0.2896278, 9.05032)
+
+[node name="CollisionShape3D" parent="NPCs/Flower/Area3D" parent_id_path=PackedInt32Array(851628040, 278580359) index="0" unique_id=1246733502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4765358, 0.08166504, 0)
+
+[node name="Flower2" parent="NPCs" unique_id=1789133399 instance=ExtResource("6_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.655077, 0.91561055, 3.2554426)
+texture = ExtResource("8_f2h0r")
+
+[node name="Face" parent="NPCs/Flower2" index="0" unique_id=388172952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06391525, 2.4629745, 0.040376663)
+texture = ExtResource("9_r4ika")
+
+[node name="CollisionShape3D" parent="NPCs/Flower2/Area3D" parent_id_path=PackedInt32Array(1789133399, 278580359) index="0" unique_id=1246733502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6687374, 0.08166504, 0)
+
+[node name="Prompt" parent="NPCs/Flower2" index="3" unique_id=618156252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.274212, 2.78679, 0)
+
+[node name="enemies" type="Node3D" parent="." unique_id=332263749]
+top_level = true
+script = ExtResource("8_ib3yi")
+
+[node name="CharacterBody3D" parent="enemies" unique_id=1734939418 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.296625, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D2" parent="enemies" unique_id=407926954 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7033749, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D3" parent="enemies" unique_id=386435156 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.296623, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D4" parent="enemies" unique_id=1028995414 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.296625, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D5" parent="enemies" unique_id=1725316618 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.296623, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D6" parent="enemies" unique_id=1813173558 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.296623, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D7" parent="enemies" unique_id=971432826 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.29662, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D8" parent="enemies" unique_id=887112365 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.29662, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D9" parent="enemies" unique_id=663751213 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.29662, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D10" parent="enemies" unique_id=1232060665 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.29662, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D11" parent="enemies" unique_id=979200891 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.29663, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="CharacterBody3D12" parent="enemies" unique_id=1791550763 instance=ExtResource("9_rp07y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.29662, -1.581265, 9.70748)
+health = -1.0
+patrol_size = Vector2(3.5, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=69414540]
+stream = ExtResource("11_f2h0r")
+autoplay = true
+
+[connection signal="sfx_changed" from="Player" to="enemies/CharacterBody3D" method="_on_player_sfx_changed"]
+
+[editable path="Player"]
+[editable path="NPCs/Flower"]
+[editable path="NPCs/Flower2"]

@@ -1,4 +1,4 @@
-@tool
+
 extends CharacterBody3D
 
 
@@ -56,7 +56,7 @@ func _on_area_3d_area_entered(area):
 	health -= area.get_parent().damage
 	if health <= 0:
 		$Sprite3D2.visible = true
-		$Sprite3D2.reparent(get_parent())
+		$Sprite3D2.reparent(get_parent().get_parent())
 		$AudioStreamPlayer.play()
 		queue_free()
 		return
